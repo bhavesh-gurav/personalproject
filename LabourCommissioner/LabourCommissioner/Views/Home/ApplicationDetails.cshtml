@@ -1,0 +1,137 @@
+﻿@using LabourCommissioner.Abstraction.DataModels
+@model IEnumerable<ApplicationDetailsModel>
+@{
+    ViewData["Title"] = "Application Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var i = 1;
+}
+
+<style>
+    section#services {
+        margin-top: 38px;
+    }
+
+    .btn-primary, .bg-primary, .badge-primary, .card-primary {
+        background: #e3a800 !important;
+        border-color: var(--navy-primary) !important;
+        color: white !important;
+    }
+</style>
+<section id="hero" class="hero2">
+    <h2 class="animate__animated animate__fadeInDown">Gujarat Labour Walfare Board</h2>
+</section>
+<main id="main">
+    <section id="services" class="services services2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-2 bg-primary d-flex justify-content-between">
+                            <span class="text-white"> અરજીઓ ની યાદી  </span>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped DataTable table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr.No.</th>
+                                            <th>Application No.</th>
+                                            <th>Application Id</th>
+                                            <th>Application Date</th>
+                                            <th>Name</th>
+                                            <th>Name in Gujarati</th>
+                                            <th>District Name</th>
+                                            <th>District Name in Gujarati</th>
+                                            <th>Taluka Name</th>
+                                            <th>Taluka Name Gujarati</th>
+                                            <th>Current Address in English</th>
+                                            <th>Current Address in Gujarati</th>
+                                            <th>Mobile No.</th>
+                                            <th>Application Status</th>
+                                             <th>Remarks</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        @if (Model != null)
+                                        {
+
+                                            @foreach (ApplicationDetailsModel item in Model)
+                                            {
+                                                <tr>
+                                                    <td scope="col">
+                                                        @i
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.ApplicationNo
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.ApplicationId
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.ApplicationDate
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.Name
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.NameinGujarati
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.DistrictName
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.DistrictNameGuj
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.TalukaName
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.TalukaNameGuj
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.CAddressInEng
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.CAddressInGuj
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.MobileNo
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.ApplicationStatus
+                                                    </td>
+                                                    <td scope="col">
+                                                        @item.Remarks
+                                                    </td>
+                                                    <td class="text-center" scope="col">
+                                                        <a asp-controller="BOCWSikshanSahayYojana" asp-action="AppPersonalDetails" asp-route-ApplicationId="@item.ApplicationId" asp-route-Id="@item.ServiceId"  >Edit</a>
+                                                    </td>
+                                                    @*<td class="text-center" scope="col">
+                                                        <a class="text-info" href="#" target="_blank" style="display :inline;">
+                                                            <i class='bx bx-file'></i>
+                                                        </a>
+                                                    </td>*@
+                                                   @* <td class="text-center" scope="co   l">
+                                                        <span id="ContentPlaceHolder1_rptServices_Label1_0" class="badge bg-danger">Pending</span>
+                                                    </td>*@
+                                                    
+
+                                                </tr>
+                                                i++;
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
